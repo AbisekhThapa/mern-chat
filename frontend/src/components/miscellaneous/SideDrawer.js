@@ -30,7 +30,7 @@ const SideDrawer = () => {
     }
 
     const handleSearch = async () => {
-        console.log(search)
+        // console.log(search)
         if (!search) {
             toast({
                 title: "Please Enter something in search",

@@ -83,7 +83,7 @@ const Signup = () => {
       });
       return;
     }
-    console.log(name, email, password, pic);
+    // console.log(name, email, password, pic);
     try {
       const config = {
         headers: {
@@ -100,7 +100,7 @@ const Signup = () => {
         },
         config
       );
-      console.log(data);
+      // console.log(data);
       setPicLoading(false);
       toast({
         title: "Registration Successful",
