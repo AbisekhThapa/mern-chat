@@ -8,6 +8,9 @@ import ChatBox from '../components/ChatBox'
 const Chat = () => {
 
   const { user, setuser } = ChatState();
+  console.log("🚀 ~ file: Chat.js:11 ~ Chat ~ user:", user)
+  var userInfo = JSON.parse(localStorage.getItem("userInfo"));
+
 
   const [fetchAgain, setFetchAgain] = useState(false)
   return (

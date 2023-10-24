@@ -9,12 +9,14 @@ import GroupChatModal from './miscellaneous/GroupChatModal';
 
 const MyChats = ({ fetchAgain }) => {
   const [loggedUser, setLoggedUser] = useState();
+  const [loading, setloading] = useState(false);
   const { user, selectedChat, setSelectedChat, chats, setChats } = ChatState()
 
   const toast = useToast()
 
   const fetchChats = async () => {
     try {
+      setloading(true)
       const config = {
         headers: {
           Authorization: `Bearer ${user.token}`,
@@ -22,6 +24,7 @@ const MyChats = ({ fetchAgain }) => {
       }
       const { data } = await axios.get("/api/chat", config);
       setChats(data)
+      setloading(false)
     } catch (error) {
       toast({
         title: 'Error occured',
@@ -31,6 +34,7 @@ const MyChats = ({ fetchAgain }) => {
         isClosable: true,
         position: "bottom-left"
       })
+      setloading(false)
     }
   }
 
@@ -80,7 +84,9 @@ const MyChats = ({ fetchAgain }) => {
         borderRadius="lg"
         overflowY="hidden"
       >
-        {chats.length > 0 ? (
+        {loading ? <>
+          <ChatLoading />
+        </> : chats.length > 0 ? (
           <Stack overflowY="auto">
             {chats?.map((chat) => (
               <Box
@@ -112,7 +118,7 @@ const MyChats = ({ fetchAgain }) => {
             ))}
           </Stack>
         ) : (
-          <ChatLoading />
+          <Text textAlign={'center'}>No user added.</Text>
         )}
       </Box>
     </Box>

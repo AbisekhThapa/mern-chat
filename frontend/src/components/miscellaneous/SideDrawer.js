@@ -96,7 +96,7 @@ const SideDrawer = () => {
     return (
         <>
             <Box display={'flex'} justifyContent={'space-between'} alignItems='center' bg='white' w={'5px 10px 5px 10px'} borderWidth={'5px'}>
-                <Tooltip label='search Users to chat' hasArrow placement='bottom'>
+                <Tooltip label='Search users to chat' hasArrow placement='bottom'>
                     <Button variant={'ghost'} onClick={onOpen}>
                         <i className='fas fa-search'></i>
                         <Text display={{ base: "none", md: "flex" }} px={4}>
@@ -104,7 +104,7 @@ const SideDrawer = () => {
                         </Text>
                     </Button>
                 </Tooltip>
-                <Text fontSize={'2xl'} fontFamily={'poppins'}> Talk-A-Tive</Text>
+                <Text fontSize={'2xl'} fontFamily={'poppins'}> Gossip.com</Text>
                 <div>
                     <Menu>
                         <MenuButton p='1'>

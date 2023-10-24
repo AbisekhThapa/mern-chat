@@ -2,6 +2,7 @@ import { Button, FormControl, FormLabel, Input, InputGroup, InputRightElement, V
 import React, { useState } from 'react'
 import axios from 'axios'
 import { useHistory } from 'react-router-dom'
+import { ChatState } from '../../context/ChatProvider'
 
 const Signup = () => {
   const [show, setShow] = useState(false)
@@ -14,6 +15,8 @@ const Signup = () => {
   const [picLoading, setPicLoading] = useState(false)
   const toast = useToast()
   const history = useHistory()
+
+  const { setUser } = ChatState()
 
   const postDetails = (pic) => {
     setLoading(true)
@@ -107,6 +110,7 @@ const Signup = () => {
         position: "bottom",
       });
       localStorage.setItem("userInfo", JSON.stringify(data));
+      setUser(data)
       history.push("/chats");
     } catch (error) {
       toast({
